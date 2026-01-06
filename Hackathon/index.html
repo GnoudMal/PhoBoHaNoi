@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Nấu Phở Bò Ngon Chuẩn Vị</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 90px 20px 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h2 {
+            color: #d32f2f;
+            border-bottom: 3px solid #d32f2f;
+            padding-bottom: 10px;
+            margin-top: 0;
+            position: relative;
+        }
+
+        h2::before {
+            content: attr(data-icon);
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 50px;
+        }
+
+        /* Hình ảnh chính */
+        .main-image,
+        .ingredient-image,
+        .step-image {
+            width: 50%;
+            max-width: 600px;
+            display: block;
+            margin: 25px auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .main-image:hover,
+        .ingredient-image:hover,
+        .step-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* List */
+        ol,
+        ul {
+            line-height: 1.8;
+            padding-left: 30px;
+        }
+
+        .tip {
+            font-style: italic;
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 25px;
+            position: relative;
+            padding-left: 50px;
+        }
+
+
+
+        /* Form */
+        form {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #d32f2f;
+            outline: none;
+            box-shadow: 0 0 8px rgba(211, 47, 47, 0.3);
+        }
+
+        /* Checkbox & Radio style */
+        .checkbox-group,
+        .radio-group {
+            margin: 15px 0;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            display: block;
+            margin: 8px 0;
+            font-weight: normal;
+        }
+
+        input[type="submit"] {
+            background-color: #d32f2f;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s;
+        }
+
+        input[type="submit"]::after {
+            content: " 🚀";
+        }
+
+        input[type="submit"]:hover {
+            background-color: #b71c1c;
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #333;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        /* === EMOJI VỚI POSITION ĐA DẠNG === */
+
+        /* 1. Fixed decoration ở các góc */
+        .deco-chef-left,
+        .deco-chef-right,
+        .deco-pot {
+            position: fixed;
+            font-size: 80px;
+            opacity: 0.7;
+            z-index: 10;
+        }
+
+        .deco-chef-left {
+            top: 100px;
+            left: 20px;
+        }
+
+        .deco-chef-right {
+            top: 100px;
+            right: 20px;
+        }
+
+        .deco-pot {
+            bottom: 40px;
+            right: 40px;
+            font-size: 100px;
+        }
+
+        /* 2. Absolute cho icon bên text (trong phần giới thiệu) */
+        .info-with-icon {
+            position: relative;
+            /* padding-left: 70px; */
+            margin: 20px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .icon-small {
+            font-size: 30px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+
+        /* 3. Section icon (trước h2) */
+        .section-icon {
+            font-size: 45px;
+            /* vertical-align: middle; */
+            margin-right: 12px;
+        }
+
+        /* 4. Tip icon */
+        .tip-icon {
+            font-size: 35px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        /* 5. Sticky title phụ (khi scroll đến sẽ dính tạm) */
+        .sticky-subtitle {
+            position: sticky;
+            top: 80px;
+            background-color: #fff0f0;
+            padding: 15px;
+            border-left: 6px solid #d32f2f;
+            font-weight: bold;
+            font-size: 1.3em;
+            z-index: 9;
+            margin: 30px -30px 20px;
+            padding-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- Header fixed -->
+    <header>
+        <h1>🍲 Phở Bò Việt Nam - Món Ngon Truyền Thống 🍜</h1>
+        <br>
+        <nav>
+            <a href="#nguyenlieu">🧺 Nguyên Liệu</a> |
+            <a href="#cacbuoc">🍳 Các Bước Nấu</a> |
+            <a href="#phanhoi">📝 Phản Hồi</a>
+        </nav>
+    </header>
+
+    <!-- Giới thiệu -->
+    <section id="gioithieu">
+        <img src="resource1/image_1.jpg" alt="Tô phở bò ngon" class="main-image">
+        <h2><span class="section-icon">🍲</span> Giới Thiệu</h2>
+
+        <div class="info-with-icon">
+            <span class="icon-small">⏰</span>
+            <span>Thời gian nấu: 6-8 giờ (chủ yếu ninh nước dùng)</span>
+        </div>
+        <div class="info-with-icon">
+            <span class="icon-small">🍽️</span>
+            <span>Khẩu phần: 4-6 người</span>
+        </div>
+
+        <p>Phở bò là món ăn quốc hồn quốc túy của Việt Nam, với nước dùng trong ngọt thanh từ xương bò, bánh phở mềm dai
+            và thịt bò tươi ngon.</p>
+        <p>Nguồn cảm hứng từ các công thức truyền thống Hà Nội.</p>
+    </section>
+
+    <!-- Nguyên liệu -->
+    <section id="nguyenlieu">
+        <h2><span class="section-icon">🧺</span> Nguyên Liệu</h2>
+
+        <div class="sticky-subtitle">🔥 Nguyên liệu chính cho nước dùng thơm ngon</div>
+
+        <img src="resource1/image_2.png" alt="Nguyên liệu nấu phở bò" class="ingredient-image">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Loại</th>
+                    <th>Nguyên Liệu</th>
+                    <th>Số Lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4">Nước dùng</td>
+                    <td>Xương ống bò</td>
+                    <td>2 kg</td>
+                </tr>
+                <tr>
+                    <td>Gừng, hành tây, hành tím</td>
+                    <td>1 củ mỗi loại</td>
+                </tr>
+                <tr>
+                    <td>Gia vị hồi, quế, thảo quả, tiểu hồi, đinh hương, hạt mùi, hạt tiêu</td>
+                    <td>1 gói (hoặc tự rang)</td>
+                </tr>
+                <tr>
+                    <td>Đường phèn, muối, nước mắm</td>
+                    <td>Vừa ăn</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Thịt & bánh</td>
+                    <td>Thịt thăn bò (tái)</td>
+                    <td>500g</td>
+                </tr>
+                <tr>
+                    <td>Nạm bò</td>
+                    <td>500g</td>
+                </tr>
+                <tr>
+                    <td>Bánh phở tươi</td>
+                    <td>1 kg</td>
+                </tr>
+                <tr>
+                    <td>Rau ăn kèm</td>
+                    <td>Hành lá, ngò gai, giá đỗ, húng quế, chanh, ớt</td>
+                    <td>Vừa đủ</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>Lưu ý: Rang gừng và hành để nước dùng thơm hơn.</li>
+            <li>Có thể thêm sá sùng để ngọt nước tự nhiên.</li>
+        </ul>
+    </section>
+
+    <!-- Các bước nấu -->
+    <section id="cacbuoc">
+        <h2><span class="section-icon">🍳</span> Các Bước Nấu</h2>
+
+        <img src="resource1/image_3.png" alt="Tô phở hoàn thiện" class="step-image">
+
+        <ol>
+            <li>Sơ chế xương: Rửa sạch xương bò, chần qua nước sôi để khử mùi.</li>
+            <li>Ninh nước dùng: Đun xương với 5-6 lít nước, hớt bọt, thêm gia vị rang (hồi, quế, thảo quả), ninh nhỏ lửa
+                6-8 tiếng.</li>
+            <li>Thái thịt bò tái mỏng, luộc chín nạm bò.</li>
+            <li>Trần bánh phở qua nước sôi.</li>
+            <li>Chan nước dùng nóng vào tô có bánh phở, thịt bò, rau thơm. Thưởng thức ngay!</li>
+        </ol>
+
+        <p class="tip"><span class="tip-icon">💡</span> Mẹo: Nước dùng càng ninh lâu càng ngọt thanh và trong!</p>
+    </section>
+
+    <!-- Form phản hồi -->
+    <section id="phanhoi">
+        <h2><span class="section-icon">📝</span> Gửi Phản Hồi & Tùy Chỉnh Công Thức</h2>
+        <form>
+            <label for="name">Họ tên:</label>
+            <input type="text" id="name" name="name" placeholder="Nhập tên của bạn">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com">
+
+            <label>Phiên bản phở bạn thích:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="version" value="bac"> Phở Bắc (thanh nhẹ)</label>
+                <label><input type="radio" name="version" value="nam"> Phở Nam (ngọt đậm)</label>
+            </div>
+
+            <label>Mức độ cay:</label>
+            <select name="spice">
+                <option value="khong">Không cay</option>
+                <option value="it">Ít cay</option>
+                <option value="trungbinh" selected>Trung bình</option>
+                <option value="cay">Cay</option>
+                <option value="sieucay">Siêu cay 🌶️🌶️🌶️</option>
+            </select>
+
+            <label>Rau thơm yêu thích (chọn nhiều):</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="herbs" value="hungque"> Húng quế</label>
+                <label><input type="checkbox" name="herbs" value="ngogai"> Ngò gai</label>
+                <label><input type="checkbox" name="herbs" value="hanhla"> Hành lá</label>
+                <label><input type="checkbox" name="herbs" value="giado"> Giá đỗ</label>
+                <label><input type="checkbox" name="herbs" value="chanh"> Chanh</label>
+            </div>
+
+            <label for="message">Ý kiến hoặc góp ý công thức:</label>
+            <textarea id="message" name="message" rows="6" placeholder="Bạn nghĩ sao về công thức này?"></textarea>
+
+            <input type="submit" value="Gửi Phản Hồi">
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Mini Project HTML CSS - Công thức Phở Bò 🍜</p>
+        <a href="https://www.dienmayxanh.com/vao-bep" target="_blank">Tham khảo thêm công thức nấu ăn</a>
+    </footer>
+
+</body>
+
+</html>
